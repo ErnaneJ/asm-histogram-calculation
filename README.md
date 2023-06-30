@@ -22,7 +22,9 @@ O histograma pode ser facilmente determinado através do seguinte algoritmo;
     H[V[i]] = H[V[i]] + 1;
 ```
 
-O objetivo aqui é elaborar um programa em `assembly` para arquitetura `MIPS` que calcule o histograma do vetor `V` apresentado anteriormente e que armazene em um vetor `H`, previamente alocado na memória. O programa será testado no simulador [MARS](http://courses.missouristate.edu/kenvollmar/mars/).
+O objetivo aqui é elaborar um programa em `assembly` para arquitetura `MIPS` que calcule o histograma do vetor `V` apresentado anteriormente e que armazene em um vetor `H`, previamente alocado na memória. O programa foi testado no simulador [MARS](http://courses.missouristate.edu/kenvollmar/mars/).
+
+![Pré visualização da execução do programa no simulador MARS](./assets/run.png)
 
 ---
 
