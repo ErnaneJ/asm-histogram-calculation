@@ -9,21 +9,7 @@
     virg: .asciiz  ", " 
 
 .text
-    # primeiramente vamos inicializar o histograma. Para isso, vamos percorrer o array e preencher com zeros.
-    
-    # variaveis auxiliares: contador, endereço do array histograma e tamanho do array 'histogram'
-    li $t0, 0
-    la $t1, histogram
-    li $t2, 10
-
-    # inicialização do histograma:
-    fill_zeros:
-        sw $zero, ($t1)          # para cada posição, preencheremos com $zero.
-        addiu $t0, $t0, 1        # incrementamos o contador marcando uma iteração
-        addiu $t1, $t1, 4        # caminhamos para a próxima posição de memória (do array de 4 em 4 bytes)
-        bne $t0, $t2, fill_zeros # se não chegou no máximo de iterações esperadas (10), continuamos
-
-    # Com o histograma inicializado, vamos calcular a quantidade de vezes que cada valor aparece no sinal:
+    # Agora vamos calcular a quantidade de vezes que cada valor aparece no sinal:
     # variaveis auxiliares: contador, endereço do array histograma e tamanho do array 'signal'
     li $t0, 0
     la $t1, histogram
@@ -39,12 +25,13 @@
         sw $s0, ($t5)     # guardamos o valor incrementado de volta naquela posição, sobrepondo o valor anterior
         addiu $t3, $t3, 4 # seguimos a implementação partindo para o próximo elemento do sinal
         addiu $t0, $t0, 1 # incrementamos o contador do loop
-        bne $t0, $t2, calculate_histogram # se não chegou em 36, continuamos o loop até o limite
+        bne $t0, $t2, calculate_histogram # se não chegou em 36, continuamos o loop
 
     # após inicialização e calculo do histograma, vamos imprimir o resultado:
     # variaveis auxiliares: contador e tamanho do array 'histogram'
     li $t0, 0  # contador
     li $t2, 10 # tamanho do histograma
+
     show_histogram:
     	li $v0, 1     # imprimir inteiro
       lw $a0, ($t1) # carregar o valor da iteração atual
